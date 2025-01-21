@@ -1,5 +1,13 @@
 Let op:
-Mijn venster is PersonalizeAI deze bevat mijn modules.
-Ik gebruik een functie in een andere module genaamd "Personalizer" deze bevat de logica van de AI engine
 
-Maar als je het software ontwerp hebt gelezen moet dat goed komen!
+PersonalizeAI
+Info: Module venster van Jesse
+
+
+Personalizer
+Info: Module venster van jelle
+
+PATH
+Recommendation/Block/Product/RecommondationService.php
+
+Deze gebruik in van Jelle zijn module en heb ik zelf ook aangepast.
