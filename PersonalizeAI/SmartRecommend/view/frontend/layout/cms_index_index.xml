@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <!-- Primary Block -->
+            <block class="PersonalizeAI\FotoAnalyzeTool\Block\ForYouRecommendations" name="for_you_recommendations" template="PersonalizeAI_FotoAnalyzeTool::for_you_recommendations.phtml" before="-"/>
+            
+            <!-- Secondary Block -->
+            <block class="PersonalizeAI\SmartRecommend\Block\RecommendedProducts" name="personalize_ai_recommended_products" template="PersonalizeAI_SmartRecommend::recommended_products.phtml" />
+
+        </referenceContainer>
+    </body>
+</page>

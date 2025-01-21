@@ -1,0 +1,46 @@
+.fb-button {
+    width: 200px;
+    height: 50px;
+    background-color: #1877f2;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.fb-button:hover {
+    background-color: #166fe5;
+}
+
+.fb-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.fb-button i {
+    font-size: 20px;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.fb-button span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fb-unlink-button {
+    background-color: #dc3545;
+}
+
+.fb-unlink-button:hover {
+    background-color: #c82333;
+}

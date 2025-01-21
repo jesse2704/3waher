@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="PersonalizeAI\FotoAnalyzeTool\Controller\Betaface\SaveBetaFaceData">
+        <arguments>
+            <argument name="context" xsi:type="object">Magento\Framework\App\Action\Context</argument>
+            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session</argument>
+            <argument name="resultJsonFactory" xsi:type="object">Magento\Framework\Controller\Result\JsonFactory</argument>
+            <argument name="logger" xsi:type="object">Psr\Log\LoggerInterface</argument>
+        </arguments>
+    </type>
+
+    <type name="PersonalizeAI\FotoAnalyzeTool\Service\FacebookProfilePicture">
+        <arguments>
+            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session</argument>
+        </arguments>
+    </type>
+
+    <type name="PersonalizeAI\FotoAnalyzeTool\Block\ForYouRecommendations">
+        <arguments>
+            <argument name="context" xsi:type="object">Magento\Catalog\Block\Product\Context</argument>
+            <argument name="postDataHelper" xsi:type="object">Magento\Framework\Data\Helper\PostHelper</argument>
+            <argument name="layerResolver" xsi:type="object">Magento\Catalog\Model\Layer\Resolver</argument>
+            <argument name="categoryRepository" xsi:type="object">Magento\Catalog\Api\CategoryRepositoryInterface</argument>
+            <argument name="urlHelper" xsi:type="object">Magento\Framework\Url\Helper\Data</argument>
+            <argument name="personalizeRecommondationAI" xsi:type="object">Personalizer\Recommendation\Block\Product\RecommondationService</argument>
+            <argument name="productCollectionFactory" xsi:type="object">Magento\Catalog\Model\ResourceModel\Product\CollectionFactory</argument>
+            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session</argument>
+        </arguments>
+    </type>
+
+    <type name="PersonalizeAI\FotoAnalyzeTool\Block\BetaFaceTool">
+        <arguments>
+            <argument name="productCollectionFactory" xsi:type="object">Magento\Catalog\Model\ResourceModel\Product\CollectionFactory</argument>
+            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session</argument>
+        </arguments>
+    </type>
+</config>

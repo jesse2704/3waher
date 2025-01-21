@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+      <head>
+        <css src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+        <css src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="PersonalizeAI\FotoAnalyzeTool\Block\ForYouRecommendations" name="for_you_recommendations" template="PersonalizeAI_FotoAnalyzeTool::for_you_recommendations.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- XML declaration specifying the version -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <!-- Define a new tab in the Magento admin configuration -->
+        <tab id="personalizeai" translate="label" sortOrder="1000">
+            <label>PersonalizeAI</label> <!-- Label for the tab -->
+        </tab>
+
+        <!-- Define a new configuration section for Facebook OAuth -->
+        <section id="facebook_oauth" translate="label" type="text" sortOrder="100" 
+                 showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Social Media</label> 
+            <tab>personalizeai</tab> <!-- Associate this section with the 'PersonalizeAI' tab -->
+            <resource>PersonalizeAI_SocialMedia::config</resource> <!-- Resource identifier for permissions -->
+
+            <!-- Grouping fields under the 'General Configuration' group -->
+            <group id="general" translate="label" type="text" sortOrder="10" 
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Configuration</label> <!-- Label for the group -->
+
+                <!-- Field for enabling or disabling module -->
+                <field id="enable" translate="label" type="select" sortOrder="10" 
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                       <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <label>Enable Module</label>
+                    <comment>Enable or disable the module here</comment>
+                </field>
+
+                <!-- Field for entering the Facebook App ID -->
+                <field id="app_id" translate="label" type="text" sortOrder="10" 
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Facebook App ID</label>
+                    <comment>Enter your Facebook App ID here</comment>
+                </field>
+                
+            </group>
+        </section>
+    </system>
+</config>

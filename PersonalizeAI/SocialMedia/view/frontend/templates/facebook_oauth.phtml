@@ -1,0 +1,30 @@
+<?php
+/** @var \PersonalizeAI\SocialMedia\Block\FacebookOAuth $block */
+?>
+
+<?php if ($block->isLoggedIn() && $block->getModuleStatus()): ?>
+
+    <div id="facebook-oauth-container">
+    <?php if (!$block->getFacebookIsLinked()): ?>
+        <button id="loginBtn" class="fb-button fb-login-button">
+            <i class="ph ph-facebook-logo"></i>
+            <span><?= $escaper->escapeHtml(__('Link Facebook')) ?></span>
+        </button>
+    <?php else: ?>
+        <button id="unlinkBtn" class="fb-button fb-unlink-button">
+            <i class="ph ph-facebook-logo"></i>
+            <span><?= $escaper->escapeHtml(__('Unlink Facebook')) ?></span>
+        </button>
+    <?php endif; ?>
+</div>
+
+<script>
+    // Require jQuery and the custom Facebook OAuth js module
+    require(['jquery', 'PersonalizeAI_SocialMedia/js/facebook-oauth'], function($, facebookOAuth) {
+        
+        // Initialize the Facebook OAuth module with the application ID
+        facebookOAuth.init('<?= $escaper->escapeJs($block->getAppId()) ?>'); 
+    });
+</script>
+<hr>
+<?php endif; ?>

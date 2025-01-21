@@ -1,0 +1,54 @@
+<?php
+/**
+ * @var \PersonalizeAI\FotoAnalyzeTool\Block\BetaFaceTool $block
+ * @var \Magento\Framework\Escaper $escaper
+ **/
+?>
+<?php if ($block->getModuleStatus()): ?>
+        <div class="photo-analyze-dropdown">
+            <button class="dropdown-toggle">Personalize Your Experience</button>
+            <div class="photo-analyze-container">
+                <h2 class="photo-analyze-title">Personalize Your Experience</h2>
+                <?php if (!$block->isSelfUploadEnabled()): ?>
+                <p class="photo-analyze-description">Link your facebook for a personalized experience</p>
+                <input style="display: none;" type="file" id="file" class="photo-upload-input" accept="image/png, image/jpeg">                    
+                <?php endif; ?>
+                <p class="photo-analyze-description">
+                <?php if ($block->isSelfUploadEnabled()): ?>
+                    <?php if (!$block->isLoggedIn()): ?>
+                        Upload a photo, and we'll personalize based on your appearance.
+                    <?php elseif ($block->isLoggedIn() && $block->getFacebookProfilePicUrl()): ?>
+                        Upload a photo or we'll use your Facebook profile picture to personalize your experience.
+                    <?php else: ?>
+                        Upload a photo or link your Facebook for a personalized experience.
+                    <?php endif; ?>
+                </p>
+                <div class="photo-upload-area">
+                    <input type="file" id="file" class="photo-upload-input" accept="image/png, image/jpeg">
+                    <label for="file" class="photo-upload-label">
+                        <span class="upload-icon">📷</span>
+                        <span class="upload-text">Choose a photo</span>
+                    </label>
+                </div>
+                <?php endif; ?>
+
+                <button class="analyze-button">
+                    <span class="button-icon">🔍</span>
+                    Analyze Photo
+                </button>
+
+                <div id="result" class="analysis-result"></div>
+            </div>
+        </div>
+<br/>
+<?php endif; ?>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "PersonalizeAI_FotoAnalyzeTool/js/betafacetool": {
+            "facebookProfilePicUrl": "<?= $escaper->escapeJs($block->getFacebookProfilePicUrl()) ?>"
+        }
+    }
+}
+</script>

@@ -1,0 +1,136 @@
+.photo-analyze-wrapper {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 70vh;
+}
+
+.photo-analyze-dropdown {
+    font-family: 'Arial', sans-serif;
+    width: 100%;
+    max-width: 400px;
+}
+
+.dropdown-toggle {
+    width: 100%;
+    padding: 15px;
+    background-color: #00b42d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-toggle:hover {
+    background-color: #009124;
+}
+
+.photo-analyze-container {
+    display: none;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-top: 10px;
+}
+
+.photo-analyze-container {
+    display: none;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-top: 10px;
+}
+
+.photo-analyze-title {
+    color: #1a1a1a;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.photo-analyze-description {
+    color: #4a4a4a;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.photo-upload-area {
+    margin-bottom: 20px;
+}
+
+.photo-upload-input {
+    display: none;
+}
+
+.photo-upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #00b42d;
+    border-radius: 8px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.photo-upload-label:hover {
+    background-color: #e6f7e6;
+}
+
+.upload-icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.upload-text {
+    color: #00b42d;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.analyze-button {
+    background-color: #00b42d;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 20px;
+    width: auto;
+    transition: background-color 0.3s ease;
+}
+
+.analyze-button:hover {
+    background-color: #009124;
+}
+
+.button-icon {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.analysis-result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.4;
+}

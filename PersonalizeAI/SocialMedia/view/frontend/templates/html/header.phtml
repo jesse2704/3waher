@@ -1,0 +1,73 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * @var \PersonalizeAI\SocialMedia\Block\FacebookOAuth $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+$welcomeMessage = $block->getWelcome();
+?>
+<?php 
+    switch ($block->getShowPart()):
+    case 'welcome': ?>
+        <ul class="header links">
+            <li class="customer-welcome" data-bind="scope: 'customer'">
+            <!-- ko if: customer().firstname  -->
+                <span class="customer-name" role="button" tabindex="0" data-toggle="dropdown" data-bind="mageInit: {'dropdown':{}}">
+                    <?php if ($block->getFacebookName()): ?>
+                    <span>Welcome <?= $block->escapeHtml($block->getFacebookName()); ?></span>
+                    <?php else: ?>
+                    <span data-bind="text: new String('<?= $escaper->escapeHtml(__('Welcome, %1', '%1')) ?>').replace('%1', customer().firstname)"></span>
+                    <?php endif; ?>
+                    <?php $facebookProfilePicUrl = $block->getFacebookProfilePicUrl();
+                    if($facebookProfilePicUrl):?>
+                    <img src="<?= $escaper->escapeUrl($facebookProfilePicUrl)?>" alt="Facebook profile picture" class="facebook-profile-pic"/>
+                    <?php endif; ?>
+                    <button type="button" class="action switch" tabindex="-1" data-action="customer-menu-toggle">
+                        <span><?= $escaper->escapeHtml(__('Change')) ?></span>
+                    </button>
+                </span>
+                <div class="customer-menu" data-target="dropdown">
+                    <ul>
+                        <li><a href="<?= $escaper->escapeUrl($block->getUrl('customer/account')) ?>"><?= $escaper->escapeHtml(__('My Account')) ?></a></li>
+                        <li><a href="<?= $escaper->escapeUrl($block->getUrl('sales/order/history')) ?>"><?= $escaper->escapeHtml(__('My Orders')) ?></a></li>
+                        <li class="link authorization-link" data-label="<?= $escaper->escapeHtml(__('or')) ?>">
+                            <a href="<?= $escaper->escapeUrl($block->getUrl('customer/account/logout')) ?>"><?= $escaper->escapeHtml(__('Sign Out')) ?></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /ko -->
+                <!-- ko ifnot: customer().firstname -->
+                <a href="/customer/account"><span data-bind="text: new String('<?= $escaper->escapeHtml($welcomeMessage) ?>')"></span></a>
+                <!-- /ko -->
+            </li>
+        </ul>
+        <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "customer": {
+                            "component": "Magento_Customer/js/view/customer"
+                        }
+                    }
+                },
+                "Magento_Customer/js/view/customer": {
+                    "config": {
+                        "cookieLifetime": 3600,
+                        "expirableCookieName": "customer_data_not_cacheable"
+                    }
+                }
+            }
+        }
+        </script>
+
+    <?php break; ?>
+
+    <?php case 'other': ?>
+        <?= $block->getChildHtml() ?>
+    <?php break; ?>
+<?php endswitch; ?>

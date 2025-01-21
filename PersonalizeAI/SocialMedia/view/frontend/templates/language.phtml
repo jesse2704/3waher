@@ -1,0 +1,64 @@
+<?php
+/** @var \PersonalizeAI\SocialMedia\Block\Language $block */
+?>
+<?php
+$currentLanguage = $block->getCurrentLanguage();
+
+// Determine current language
+$current = $currentLanguage === 'nl_NL' ? 'Nederlands' : 
+           (stripos($currentLanguage, 'English') !== false ? 'Engels' : 'Onbekend');
+
+// Get preferred languages
+$facebookLanguages = $block->getFacebookLanguages();
+$prefer = !empty($facebookLanguages) ? 
+          (stripos($facebookLanguages[0]['name'], 'English') !== false ? 'Engels' : 
+           (stripos($facebookLanguages[0]['name'], 'Nederlands') !== false ? 'Nederlands' : $facebookLanguages[0]['name'])) : 
+          $current;
+
+// Only keep the first word of $prefer
+$preferWords = explode(' ', $prefer);
+$prefer = $preferWords[0]; // Get the first word
+
+// Debugging output for current and preferred languages
+// echo "Current Language: " . $block->escapeHtml($current) . "<br>";
+// echo "Preferred Language: " . $block->escapeHtml($prefer) . "<br>";
+
+$request = ($prefer === 'Engels') ? 'default' : ($prefer === 'Nederlands' ? 'NL' : '');
+
+if ($current !== $prefer): ?> 
+<div>
+    <p>
+        <?php if ($current == 'Engels'): ?> 
+            We hebben opgemerkt dat je gewenste taal Nederlands is, alleen de huidige taal is 
+            <?= $block->escapeHtml($current) ?>
+            Wilt u de taal veranderen?
+        <?php elseif ($current == 'Nederlands'): ?>
+            We noticed your preferred language is English, but the current language is
+            <?= $block->escapeHtml($current) ?>
+            Do you want to change the language?
+        <?php endif; ?>
+    </p>
+    <button id="changeStoreViewButton" type="button" onclick="changeStoreView('<?= $block->escapeHtml($prefer) ?>')">
+        Wissel Store View
+    </button>
+</div>
+
+<hr/>
+
+<?php endif; ?>
+
+<script>
+function changeStoreView(lang) {
+    var request = (lang === 'Engels') ? 'default' : (lang === 'Nederlands' ? 'NL' : '');
+
+    var urls = {
+        'default': '<?= $block->escapeHtml($block->changeStoreView("default")) ?>',
+        'NL': '<?= $block->escapeHtml($block->changeStoreView("NL")) ?>',
+        '': '<?= $block->escapeHtml($block->changeStoreView($request)) ?>'
+    };
+
+    var url = urls[request] || urls[''];
+
+    window.location.href = url;
+}
+</script>

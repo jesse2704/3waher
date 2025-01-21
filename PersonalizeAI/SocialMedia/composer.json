@@ -1,0 +1,15 @@
+{
+    "name": "PersonalizeAi/SocialMedia",
+    "description": "link social media to personalize the webshop",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "require": {
+        "php": "~php8.1.0"
+    },
+    "autoload": {
+        "files": [ "registration.php "],
+        "psr-4": {
+            "PersonalizeAi\\SocialMedia\\": ""
+        }
+    }
+}
